@@ -22,9 +22,7 @@ html {
 ul {
   list-style: none;
 }
-::-webkit-scrollbar {
-  width: 0px;
-}
+
 @font-face {
   font-family: cairo;
   src: url(../public/fonts/Cairo-VariableFont_slnt\,wght.ttf);
@@ -60,11 +58,11 @@ body {
 .signup-container{
   background-image: url(../public/asset/signup.jpg);
 }
-input{
+input,select{
   border: none;
   outline: none;
 }
-input:focus{
+input:focus,select:focus{
   outline: none;
 }
 .service-box{
@@ -79,6 +77,21 @@ input:focus{
 }
 .sharpGradient{
   background: linear-gradient(to top ,#2d3d8a 0%,#2d3d8a 50% ,#FFF 50%,#FFF 50% )
+}
+
+/*--------------------------------*/
+/*--------Profile Page--------*/
+/*--------------------------------*/
+.data-text {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  
+}
+.data-text span{
+  text-wrap: nowrap;
+  margin-left: 10px
+  
 }
 @layer utilities {
   .max-container {

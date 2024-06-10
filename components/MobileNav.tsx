@@ -7,7 +7,7 @@ const MobileNav = ({ setOpen,isLoggedIn }: any) => {
     return (
         <div
             data-aos="fade-down" data-aos-duration="600"
-            className='padding-container z-10 rounded-lg absolute top-full left-0 bg-main-600 xs:w-full '>
+            className='padding-container z-50 rounded-lg absolute top-full left-0 bg-main-600 xs:w-full '>
             <ul className='xs:flex flex-col justify-center gap-5 md:hidden py-3 text-white '>
                 {navlinks.map((navlink, index) => (
                     <li key={index} >

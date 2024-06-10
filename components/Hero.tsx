@@ -23,7 +23,7 @@ const Hero = () => {
                         <div className='  absolute rounded-full -top-[90px] -left-[90px] bg-gray-100 lg:w-[830px] lg:h-[830px] xs:w-[630px] xs:h-[630px] ' ></div>
                         <form 
                         data-aos="zoom-in" data-aos-delay="600"
-                        className=' relative w-full z-20 flex bg-white  rounded-5xl overflow-hidden shadow-lg'>
+                        className=' relative w-full z-20 flex bg-white  rounded-xl overflow-hidden shadow-lg'>
                             <select
                                 title='placeType'
                                 className=' xs:w-2/6 md:w-1/5w-1/5'
@@ -39,7 +39,7 @@ const Hero = () => {
                             <input
                                 type="submit"
                                 value="بحث"
-                                className='rounded-5xl xs:w-2/6 md:w-1/5 bg-main-200 text-white py-5 cursor-pointer'
+                                className='rounded-xl xs:w-2/6 md:w-1/5 bg-main-200 text-white py-5 cursor-pointer'
                             />
                         </form>
                     </div>

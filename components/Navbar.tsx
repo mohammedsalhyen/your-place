@@ -8,9 +8,12 @@ import AOS from "aos"
 import "../node_modules/aos/dist/aos.css"
 import Button from './ui/Button'
 import { FaUser } from 'react-icons/fa'
+import { urlFor } from '@/lib/client'
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser]:any = useState({});
+    
     useEffect(() => {
         AOS.init({
             easing: 'ease-in-out',
@@ -18,11 +21,14 @@ const Navbar = () => {
             delay: 200
         });
         //check if find user or not
-        const user = localStorage.getItem("user-your-place-here");
-        if (user) {
+        const userJson:any = localStorage.getItem("user-your-place-here");
+        let parsedUser;
+        if (userJson) {
             setIsLoggedIn(true);
+            setUser(JSON.parse(userJson)) ;
         }
     }, [])
+    console.log(user);
     return (
         <nav className=' max-container padding-container py-4 text-lg  font-bold relative z-20' data-aos="fade-down">
             <div className='flex justify-between items-center '>
@@ -47,9 +53,9 @@ const Navbar = () => {
                     </ul>
                     {
                             isLoggedIn ? 
-                            <div className=' cursor-pointer w-12 h-12 rounded-full bg-main-600 xs:flex-center text-gray-100 text-2xl '>
-                                <FaUser />
-                            </div> : 
+                            <Link href={`/profile/${user?._id}`} className=' cursor-pointer w-12 h-12 rounded-full bg-main-600 xs:flex-center text-gray-100 text-2xl '>
+                                <Image src={(user?.profilePicture&&urlFor(user?.profilePicture).url())} alt="navbar-icon" width={45} height={45} />
+                            </Link> : 
                             <div>
                                 <Link href={"/login"} className='xs:text-sm py-2 text-white px-3 bg-main-600 rounded-lg'>
                                 تسجيل الدخول

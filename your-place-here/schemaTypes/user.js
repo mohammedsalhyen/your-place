@@ -7,7 +7,6 @@ export default {
         { name: 'email', type: 'string', title: 'Email' },
         { name: 'password', type: 'string', title: 'Password' },
         { name: 'phoneNumber', type: 'string', title: 'Phone Number' },
-        { name: 'dateOfBirth', type: 'date', title: 'Date of Birth' },
         { name: 'address', type: 'string', title: 'Address' },
         { name: 'gender', type: 'string', title: 'Gender' },
         {

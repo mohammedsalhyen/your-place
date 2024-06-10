@@ -1,23 +1,31 @@
-import Link from 'next/link'
+import { client } from '@/lib/client';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
-import { FaUser, FaLock, FaPhone, FaAddressBook, FaImage } from 'react-icons/fa'
-import { MdDriveFileRenameOutline, MdEmail } from 'react-icons/md'
-import { client } from "@/lib/client"
-import { useRouter } from 'next/router'
+import toast from 'react-hot-toast';
+import Image from 'next/image';
+import { FaUser, FaLock, FaPhone, FaAddressBook, FaImage, FaBuilding, FaDeskpro } from 'react-icons/fa';
+import { MdDriveFileRenameOutline, MdEmail } from 'react-icons/md';
+import { placeTypes } from '@/constants';
+import { FaWebAwesome } from 'react-icons/fa6';
 import "../../node_modules/aos/dist/aos.css"
-import toast from 'react-hot-toast'
-import Aos from 'aos'
-const SignUp = () => {
+import Aos from 'aos';
+
+const BussinessSignUp = () => {
     const router = useRouter();
     //States to save data
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [businessName, setBusinessName] = useState("");
+    const [businessAddress, setBusinessAddress] = useState("");
+    const [businessType, setBusinessType] = useState("");
+    const [website, setWebsite] = useState("");
+    const [description, setDescription] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [address, setAddress] = useState("");
-    const [gender, setGender] = useState("");
+    const [workingHours, setWorkingHours] = useState("");
+    const [socialMedia, setSocialMedia] = useState("");
     const [profilePicture, setProfilePicture]: any = useState(null);
     const [imageAsset, setImageAsset]: any = useState(null);
 
@@ -54,13 +62,18 @@ const SignUp = () => {
             }
             if (fullName && email && password && imageAsset?._id && phoneNumber) {
                 const document = {
-                    _type: 'user',
+                    _type: 'business',
                     fullName,
                     email,
                     password,
                     phoneNumber,
-                    address,
-                    gender,
+                    businessName,
+                    businessAddress,
+                    businessType,
+                    website,
+                    description,
+                    workingHours,
+                    socialMedia,
                     profilePicture: {
                         _type: 'image',
                         asset: {
@@ -73,15 +86,14 @@ const SignUp = () => {
                 toast.success("جارِِ التحويل لصفحة تسجيل الدخول");
                 router.push('/login');
             }
-
         } catch (error) {
             console.log(error)
         }
     }
 
     return (
-        <div className='signup-container flex-center xs:h-full xs:main-prop md:py-0 md:h-[100vh] overflow-hidden'>
-            <div className='flex h-[90%] w-[80%] bg-white rounded-xl overflow-hidden '>
+        <div className='signup-container flex-center  main-prop overflow-hidden'>
+            <div className='flex  w-[80%] bg-white rounded-xl overflow-hidden '>
                 <div className=" text-white xs:hidden sm:flex w-3/5 padding-container bg-main-800 login-bg  flex-col justify-center text-start">
                     <Link href={"/"} className='flex items-center' data-aos="fade-up">
                         <div>
@@ -96,7 +108,7 @@ const SignUp = () => {
                         تصفح الان
                     </Link>
                 </div>
-                <div data-aos="fade-right" data-aos-delay="1100" className=' flex flex-col justify-center px-8 py-10'>
+                <div data-aos="fade-left" data-aos-delay="1100" className=' flex flex-col justify-center px-8 py-10'>
                     <p className='text-[32px] mb-8 font-bold text-black'>مرحبا بك في موقعنا</p>
                     <form onSubmit={handleSignUp} className='grid xs:grid-cols-1 md:grid-cols-2 gap-5'>
                         <div className=" flex   mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
@@ -106,7 +118,7 @@ const SignUp = () => {
                                 value={fullName}
                                 onChange={handleSignInChange(setFullName)}
                                 name="fullName"
-                                placeholder="الاسم بالكامل"
+                                placeholder=" اسم مالك المؤسسة"
                                 required
                                 className='text-black focus:outline-none w-full bg-inherit'
                             />
@@ -160,33 +172,88 @@ const SignUp = () => {
                                 className='text-black focus:outline-none w-full bg-inherit'
                             />
                         </div>
-
+                        <div className=" flex   mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
+                            <FaBuilding className=' w-11' />
+                            <input
+                                type="text"
+                                name="businessName"
+                                placeholder=" اسم المؤسسة"
+                                value={businessName}
+                                onChange={handleSignInChange(setBusinessName)}
+                                required
+                                className=' w-1/2 text-black focus:outline-none  bg-inherit'
+                            />
+                        </div>
+                        <div className=" flex   mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
+                            <FaDeskpro className=' w-11' />
+                            <input
+                                type="text"
+                                name="description"
+                                placeholder=" وصف المؤسسة"
+                                value={description}
+                                onChange={handleSignInChange(setDescription)}
+                                required
+                                className=' w-1/2 text-black focus:outline-none  bg-inherit'
+                            />
+                        </div>
+                        <div className=" flex   mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
+                            <FaDeskpro className=' w-11' />
+                            <input
+                                type="number"
+                                name="workingHours"
+                                placeholder="عدد ساعات العمل "
+                                value={workingHours}
+                                onChange={handleSignInChange(setWorkingHours)}
+                                required
+                                className='  text-black focus:outline-none  bg-inherit'
+                            />
+                        </div>
                         <div className=" flex  mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
                             <FaAddressBook />
                             <input
                                 type="text"
-                                name="address"
+                                name="businessAddress"
                                 placeholder="العنوان"
-                                value={address}
-                                onChange={handleSignInChange(setAddress)}
+                                value={businessAddress}
+                                onChange={handleSignInChange(setBusinessAddress)}
+                                className='text-black focus:outline-none w-full bg-inherit'
+                            />
+                        </div>
+
+                        <div className=" flex  mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
+                            <FaWebAwesome />
+                            <input
+                                type="text"
+                                name="website"
+                                placeholder="الموقع الالكتروني"
+                                value={website}
+                                onChange={handleSignInChange(setWebsite)}
+                                className='text-black focus:outline-none w-full bg-inherit'
+                            />
+                        </div>
+                        <div className=" flex  mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
+                            <FaAddressBook />
+                            <input
+                                type="text"
+                                name="socialMedia"
+                                placeholder="رابط موقع التواصل الاجتماعي "
+                                value={socialMedia}
+                                onChange={handleSignInChange(setSocialMedia)}
                                 className='text-black focus:outline-none w-full bg-inherit'
                             />
                         </div>
                         <div className=" flex  mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
                             <FaUser />
-                            <select
-                                name="gender"
-                                title='gender'
-                                value={gender} onChange={handleSignInChange(setGender)}
-                                className='w-full'>
-                                <option value="">النوع</option>
-                                <option value="male">ذكر</option>
-                                <option value="female">انثي</option>
+                            <select name="businessType" title='businessType' value={businessType} onChange={handleSignInChange(setBusinessType)} >
+                                {placeTypes.map((place) => (
+                                    <option key={place.value} value={place.value}>{place.name}</option>
+                                ))}
                             </select>
                         </div>
+
                         <div className=" flex   mb-3 items-center border-[1px] rounded-3xl border-[#DDD] gap-1 p-3 text-[#a9a9a9]">
-                            <FaImage className=' text-xl w-full' />
-                            <p className=' ml-2 text-nowrap'> صورة الملف الشخصي</p>
+                            <FaImage className=' text-xl' />
+                            <p className=' ml-2 text-nowrap'> صورة المؤسسة</p>
                             <input
                                 type="file"
                                 name="Photo"
@@ -208,4 +275,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default BussinessSignUp
