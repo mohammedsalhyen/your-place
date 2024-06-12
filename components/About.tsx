@@ -16,7 +16,7 @@ const About = () => {
                     </div>
                     <div className=' relative xs:mt-24 md:mt-0'>
                         <div 
-                        data-aos="fade-up-right" data-aos-delay="1000" 
+                        data-aos="fade-up-right" data-aos-delay="400" 
                         className=' relative rounded-xl  z-10  about-container shadow-lg  md:w-[400px]  md:h-[400px]  xs:w-[300px]  xs:h-[300px]'></div>
                         <div 
                         data-aos="fade-up-right"

@@ -28,7 +28,6 @@ const Navbar = () => {
             setUser(JSON.parse(userJson)) ;
         }
     }, [])
-    console.log(user);
     return (
         <nav className=' max-container padding-container py-4 text-lg  font-bold relative z-20' data-aos="fade-down">
             <div className='flex justify-between items-center '>
@@ -53,7 +52,7 @@ const Navbar = () => {
                     </ul>
                     {
                             isLoggedIn ? 
-                            <Link href={`/profile/${user?._id}`} className=' cursor-pointer w-12 h-12 rounded-full bg-main-600 xs:flex-center text-gray-100 text-2xl '>
+                            <Link href={`/profile/${user?._id}`} className=' overflow-hidden cursor-pointer w-12 h-12 rounded-full  xs:flex-center text-gray-100 text-2xl '>
                                 <Image src={(user?.profilePicture&&urlFor(user?.profilePicture).url())} alt="navbar-icon" width={45} height={45} />
                             </Link> : 
                             <div>

@@ -3,11 +3,11 @@ export default {
     type: 'document',
     title: 'Business',
     fields: [
+        { name: 'businessName', type: 'string', title: 'Business Name' },
         { name: 'fullName', type: 'string', title: 'Full Name' },
         { name: 'email', type: 'string', title: 'Email' },
         { name: 'password', type: 'string', title: 'Password' },
         { name: 'phoneNumber', type: 'string', title: 'Phone Number' },
-        { name: 'businessName', type: 'string', title: 'Business Name' },
         { name: 'businessAddress', type: 'string', title: 'Business Address' },
         { name: 'businessType', type: 'string', title: 'Business Type' },
         { name: 'website', type: 'url', title: 'Website' },
@@ -17,7 +17,7 @@ export default {
         {
             name: 'profilePicture',
             type: 'image',
-            title: 'rofile Picture',
+            title: 'Profile Picture',
             options: { hotspot: true },
         },
     ],

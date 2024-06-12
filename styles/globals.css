@@ -22,6 +22,10 @@ html {
 ul {
   list-style: none;
 }
+th{
+  text-align: start;
+  font-weight: normal;
+}
 
 @font-face {
   font-family: cairo;
