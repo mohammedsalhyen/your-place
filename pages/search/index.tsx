@@ -83,7 +83,7 @@ const index = () => {
             </header>
             <main className='main-prop min-h-96'>
                 <div className='pt-16 padding-container max-container'>
-                    <ul className='grid grid-cols-3 gap-5'>
+                    <ul className='grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                         {searchArray &&
                             searchArray.map((item: any, index: number) => (
                                 <li

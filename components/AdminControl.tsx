@@ -76,14 +76,13 @@ const AdminControl = () => {
                     <thead >
                         <tr className='border-b-[1px] py-2 text-main-600 border-main-800'>
                             <th className='font-bold py-2'>اسم المستخدم</th>
-                            <th className='font-bold py-2'>الـ ID</th>
-                            <th className='font-bold py-2'>نوع الاجراء</th>
-
+                            <th className='font-bold py-2 xs:hidden sm:table-cell'>الـ ID</th>
+                            <th className='font-bold py-2 xs:hidden sm:table-cell'>نوع الاجراء</th>
                         </tr>
                     </thead>
                     <tbody>
                         {users.map((item: any, index: number) => (
-                            <tr className='text-main-800 border-b-[1px] border-gray-300'>
+                            <tr className='text-main-800 border-b-[1px] sm:table-row xs:flex xs:flex-col sm:flex-row border-gray-300'>
                                 <th className=' py-3'>{item.fullName}</th>
                                 <th className='py-3'>{item._id}</th>
                                 <th className='py-3 flex gap-x-3'>

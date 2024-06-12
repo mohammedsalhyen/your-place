@@ -22,9 +22,7 @@ const ProfileNav = ({ user, open,setOpen, basicData, setBasicData, bussinessData
                                 />
                                 <p>{user?.fullName}</p>
                             </div>
-
                         </div>
-
                     </div>
                     <div className='px-5 gap-y-10 xs:h-fit sm:h-[calc(100vh-80px)] text-[#848484]  bg-main-800 py-10 flex justify-between flex-col '>
                         <div className=' flex flex-col gap-y-3 '>
