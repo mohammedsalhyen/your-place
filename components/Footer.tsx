@@ -50,7 +50,7 @@ const Footer = () => {
                     <div className='pt-6'>
                         <h2 className='text-xl font-bold pb-3'>تواصل معنا</h2>
                         <div className=' text-gray-400'>
-                            <p>+201110948994</p>
+                            <p>0910000000</p>
                             <p>email@gamil.com</p>
                             <p>2email@gamil.com</p>
                             <p>بنغازي-ليبيا</p>
