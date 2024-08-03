@@ -5,10 +5,10 @@ import { FaFacebookF, FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa'
 import { services } from '@/constants';
 const Footer = () => {
     const socialLinks = [
-        { href: "https://www.linkedin.com/in/mohammed-abdelsalhyen-sherief-8976441b8/", icon: <FaLinkedinIn /> },
-        { href: "https://github.com/mohammedsalhyen", icon: <FaGithub /> },
-        { href: "https://www.facebook.com/mohammed.abdelsalhyen", icon: <FaFacebookF /> },
-        { href: "https://wa.me/201110948994", icon: <FaWhatsapp /> }
+        { href: "#", icon: <FaLinkedinIn /> },
+        { href: "#", icon: <FaGithub /> },
+        { href: "#", icon: <FaFacebookF /> },
+        { href: "#", icon: <FaWhatsapp /> }
     ];
     return (
         <div >
